@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'MBKit_Example' do
+  pod 'MBKit', :path => '../'
+
+  target 'MBKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
