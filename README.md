@@ -1,2 +1,2 @@
 # MBKit
-A collection of our project used iOS components.
+A collection of iOS components in our project.
