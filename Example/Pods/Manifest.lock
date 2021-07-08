@@ -15,7 +15,7 @@ PODS:
   - GCDWebServer/WebUploader (3.5.4):
     - GCDWebServer/Core
   - Masonry (1.1.0)
-  - MBKit (0.1.0):
+  - MBKit (0.3.0):
     - DoraemonKit/Core
     - Masonry
 
@@ -38,7 +38,7 @@ SPEC CHECKSUMS:
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   GCDWebServer: 2c156a56c8226e2d5c0c3f208a3621ccffbe3ce4
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  MBKit: 38aa2276d8e68771867616d5f84d878bb072e7a1
+  MBKit: 18e7ab1fbc796aa3433149265a4921279a4a36ed
 
 PODFILE CHECKSUM: 21a7eeec22f55802e9879b1df2c4d4cc087e6e15
 

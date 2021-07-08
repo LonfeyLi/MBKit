@@ -1,8 +1,8 @@
 {
   "name": "MBKit",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "summary": "A collection of iOS components in our project.",
-  "description": "TODO: 我们项目用到的工具类.",
+  "description": "TODO: 我们公司项目用到的iOS工具类合集.",
   "homepage": "https://github.com/LoneyLi/MBKit",
   "license": {
     "type": "MIT",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/LoneyLi/MBKit.git",
-    "tag": "0.1.0"
+    "tag": "0.3.0"
   },
   "platforms": {
     "ios": "9.0"
@@ -27,6 +27,5 @@
     "Masonry": [
 
     ]
-  },
-  "libraries": "z"
+  }
 }

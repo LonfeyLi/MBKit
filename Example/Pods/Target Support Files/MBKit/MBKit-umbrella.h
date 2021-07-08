@@ -23,10 +23,8 @@
 #import "MBNetworkTransactionTableViewCell.h"
 #import "MBNetworkUtility.h"
 #import "MBNetworkWebViewController.h"
-#import "NSArray+MB.h"
 #import "NSArray+MBNetwork.h"
 #import "NSObject+MBNetwork.h"
-#import "NSUserDefaults+MB.h"
 #import "NSUserDefaults+MBNetwork.h"
 
 FOUNDATION_EXPORT double MBKitVersionNumber;
