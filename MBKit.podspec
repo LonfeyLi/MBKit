@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = 'MBKit'
-s.version          = '0.1.0'
+s.version          = '0.2.0'
 s.summary          = 'A collection of iOS components in our project.'
 
 # This description is used to generate tags and improve search results.
@@ -18,7 +18,7 @@ s.summary          = 'A collection of iOS components in our project.'
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
 s.description      = <<-DESC
-TODO: 我们项目用到的工具类.
+TODO: 我们公司项目用到的iOS工具类合集.
 DESC
 
 s.homepage         = 'https://github.com/LoneyLi/MBKit'
@@ -38,5 +38,4 @@ s.source_files = 'MBKit/Classes/MBNetworkRecorder/**/*{.h,.m,.mm}'
 # s.frameworks = 'UIKit', 'MapKit'
 s.dependency 'DoraemonKit/Core'
 s.dependency 'Masonry'
-s.library = 'z'
 end

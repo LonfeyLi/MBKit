@@ -1,0 +1,6 @@
+framework module Pods_MBKit_Tests {
+  umbrella header "Pods-MBKit_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

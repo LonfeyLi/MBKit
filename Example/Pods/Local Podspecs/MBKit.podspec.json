@@ -1,0 +1,32 @@
+{
+  "name": "MBKit",
+  "version": "0.1.0",
+  "summary": "A collection of iOS components in our project.",
+  "description": "TODO: 我们项目用到的工具类.",
+  "homepage": "https://github.com/LoneyLi/MBKit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "LoneyLi": "lufei@maltbaby.com.cn"
+  },
+  "source": {
+    "git": "https://github.com/LoneyLi/MBKit.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "requires_arc": true,
+  "source_files": "MBKit/Classes/MBNetworkRecorder/**/*{.h,.m,.mm}",
+  "dependencies": {
+    "DoraemonKit/Core": [
+
+    ],
+    "Masonry": [
+
+    ]
+  },
+  "libraries": "z"
+}

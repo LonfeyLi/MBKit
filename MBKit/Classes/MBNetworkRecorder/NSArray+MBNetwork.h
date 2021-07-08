@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSArray<T> (MBNetwork)
 - (__kindof NSArray *)mb_mapped:(id(^)(T obj, NSUInteger idx))mapFunc;
 - (instancetype)mb_filtered:(BOOL(^)(T obj, NSUInteger idx))filterFunc;
-+ (instancetype)flex_mapped:(id<NSFastEnumeration>)collection block:(id(^)(T obj, NSUInteger idx))mapFunc;
 @end
 
 NS_ASSUME_NONNULL_END
