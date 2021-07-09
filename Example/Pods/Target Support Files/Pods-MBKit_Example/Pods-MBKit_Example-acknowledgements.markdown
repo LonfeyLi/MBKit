@@ -499,7 +499,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ## MBKit
 
-Copyright (c) 2021 LoneyLi <lufei@maltbaby.com.cn>
+Copyright (c) 2021 LonfeyLi <lufei@maltbaby.com.cn>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

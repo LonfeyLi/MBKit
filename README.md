@@ -1,6 +1,6 @@
 # MBKit
 
-[![CI Status](https://img.shields.io/travis/LoneyLi/MBKit.svg?style=flat)](https://travis-ci.org/LoneyLi/MBKit)
+[![CI Status](https://img.shields.io/travis/LonfeyLi/MBKit.svg?style=flat)](https://travis-ci.org/LonfeyLi/MBKit)
 [![Version](https://img.shields.io/cocoapods/v/MBKit.svg?style=flat)](https://cocoapods.org/pods/MBKit)
 [![License](https://img.shields.io/cocoapods/l/MBKit.svg?style=flat)](https://cocoapods.org/pods/MBKit)
 [![Platform](https://img.shields.io/cocoapods/p/MBKit.svg?style=flat)](https://cocoapods.org/pods/MBKit)
@@ -22,7 +22,7 @@ pod 'MBKit'
 
 ## Author
 
-LoneyLi, lufei@maltbaby.com.cn
+LonfeyLi, lufei@maltbaby.com.cn
 
 ## License
 

@@ -3,7 +3,7 @@
 //  MBKit_Example
 //
 //  Created by 李龙飞 on 2021/7/7.
-//  Copyright © 2021 LoneyLi. All rights reserved.
+//  Copyright © 2021 LonfeyLi. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
