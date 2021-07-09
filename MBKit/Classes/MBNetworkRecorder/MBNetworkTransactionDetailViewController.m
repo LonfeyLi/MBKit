@@ -6,7 +6,6 @@
 //  Copyright © 2021 杭州因爱网络科技有限公司. All rights reserved.
 //
 
-#ifndef RELEASE
 
 #import "MBNetworkTransactionDetailViewController.h"
 #import "MBNetworkWebViewController.h"
@@ -15,7 +14,9 @@
 #import "MBNetworkRecorder.h"
 #import "MBNetworkResources.h"
 #import "MBNetworkDetailTableViewCell.h"
-#import "MBAlertControllerManager.h"
+#import "MBNetworkWebViewController.h"
+#import "MBNetworkAlertController.h"
+#import "encryptor.h"
 #import "masonry.h"
 typedef UIViewController * _Nullable(^MBCustomContentViewerFuture)(NSData *data);
 @interface MBNetworkTransactionDetailViewController ()
@@ -238,7 +239,7 @@ typedef UIViewController * _Nullable(^MBCustomContentViewerFuture)(NSData *data)
 
             // We can't show the body, alert user
             
-            return [MBAlertControllerManager makeAlert:^(MBAlertControllerManager * _Nonnull make) {
+            return [MBNetworkAlertController makeAlert:^(MBNetworkAlertController * _Nonnull make) {
                 make.title = @"Can't View HTTP Body Data";
                 make.message = (@"FLEX does not have a viewer for request body data with MIME type: ");
                 make.button = @"Dismiss";
@@ -282,7 +283,7 @@ typedef UIViewController * _Nullable(^MBCustomContentViewerFuture)(NSData *data)
                     return bodyDetailController;
                 }
             }
-            return [MBAlertControllerManager makeAlert:^(MBAlertControllerManager * _Nonnull make) {
+            return [MBNetworkAlertController makeAlert:^(MBNetworkAlertController * _Nonnull make) {
                 make.title = @"Unable to View Response";
                 if (strongResponseData) {
                     make.message = @"No viewer content type: ";
@@ -429,6 +430,34 @@ typedef UIViewController * _Nullable(^MBCustomContentViewerFuture)(NSData *data)
     UIViewController *detailViewController = nil;
     if ([MBNetworkUtility isValidJSONData:data]) {
         NSString *jsonString = [MBNetworkUtility prettyJSONStringFromData:data];
+        if ([type isEqualToString:@"Response"]) {
+            RequestStruct newRequestStruct  = RequestStruct();
+            NSString *newResponseString =jsonString?[jsonString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]:@"";
+            newRequestStruct.content = newResponseString.UTF8String;
+            //response header
+            NSHTTPURLResponse *httpURLResponse = (NSHTTPURLResponse*)self.transaction.response;
+            NSDictionary *allHeaderFieldsDic = httpURLResponse.allHeaderFields;
+            __block std::map<string, string> header_map;
+            [allHeaderFieldsDic enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSString * _Nonnull obj, BOOL * _Nonnull stop) {
+                header_map[key.UTF8String] = obj.UTF8String;
+            }];
+            //decrypt data
+            newRequestStruct.header_map = header_map;
+            NSString *url = self.transaction.request.URL.absoluteString;
+            if ([url hasPrefix:@"https://"]) {
+                url = [url substringFromIndex:8];
+            } else if ([url hasPrefix:@"https://"]) {
+                url = [url substringFromIndex:7];
+            }
+            newRequestStruct.request_url = url.UTF8String;
+            NSDictionary *headerDic = self.transaction.request.allHTTPHeaderFields;
+            NSString *token = [headerDic valueForKey:@"Cookie"]?:[headerDic valueForKey:@"k-Cookie"];
+            newRequestStruct.token = token?token.UTF8String:"";
+            //dencrypt
+            RequestStruct decryptRequest = Encryptor::DecryptRequest(newRequestStruct);
+            NSString *decryptString = [NSString stringWithFormat:@"%s",decryptRequest.content.c_str()];
+            jsonString = [jsonString stringByAppendingString:[NSString stringWithFormat:@"\n%@",decryptString]];
+        }
         if (jsonString.length>0) {
             detailViewController = [[MBNetworkWebViewController alloc] initWithText:jsonString];
         }
@@ -443,6 +472,34 @@ typedef UIViewController * _Nullable(^MBCustomContentViewerFuture)(NSData *data)
     // Fall back to trying to show the response as text
     if (!detailViewController) {
         NSString *text = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        if ([type isEqualToString:@"Response"]) {
+            RequestStruct newRequestStruct  = RequestStruct();
+            NSString *newResponseString =text?[text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]:@"";
+            newRequestStruct.content = newResponseString.UTF8String;
+            //response header
+            NSHTTPURLResponse *httpURLResponse = (NSHTTPURLResponse*)self.transaction.response;
+            NSDictionary *allHeaderFieldsDic = httpURLResponse.allHeaderFields;
+            __block std::map<string, string> header_map;
+            [allHeaderFieldsDic enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSString * _Nonnull obj, BOOL * _Nonnull stop) {
+                header_map[key.UTF8String] = obj.UTF8String;
+            }];
+            //decrypt data
+            newRequestStruct.header_map = header_map;
+            NSString *url = self.transaction.request.URL.absoluteString;
+            if ([url hasPrefix:@"https://"]) {
+                url = [url substringFromIndex:8];
+            } else if ([url hasPrefix:@"http://"]) {
+                url = [url substringFromIndex:7];
+            }
+            newRequestStruct.request_url = url.UTF8String;
+            NSDictionary *headerDic = self.transaction.request.allHTTPHeaderFields;
+            NSString *token = [headerDic valueForKey:@"Cookie"]?:[headerDic valueForKey:@"k-Cookie"];
+            newRequestStruct.token = [token substringFromIndex:6] .UTF8String;
+            //dencrypt
+            RequestStruct decryptRequest = Encryptor::DecryptRequest(newRequestStruct);
+            NSString *decryptString = [NSString stringWithFormat:@"%s",decryptRequest.content.c_str()];
+            text = [text stringByAppendingString:[NSString stringWithFormat:@"\n%@",decryptString]];
+        }
         if (text.length > 0) {
             detailViewController = [[MBNetworkWebViewController alloc] initWithText:text];
         }
@@ -474,4 +531,4 @@ typedef UIViewController * _Nullable(^MBCustomContentViewerFuture)(NSData *data)
 
 @end
 
-#endif
+

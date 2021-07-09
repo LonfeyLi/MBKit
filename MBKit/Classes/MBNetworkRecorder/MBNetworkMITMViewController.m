@@ -6,7 +6,6 @@
 //  Copyright © 2021 杭州因爱网络科技有限公司. All rights reserved.
 //
 
-#ifndef RELEASE
 
 #import "MBNetworkMITMViewController.h"
 #import "MBNetworkTransactionDetailViewController.h"
@@ -253,4 +252,3 @@
 
 @end
 
-#endif

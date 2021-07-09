@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#ifndef RELEASE
 
 NS_ASSUME_NONNULL_BEGIN
 extern NSString * const kMBDefaultsNetworkHostBlacklistKey;
@@ -19,4 +18,3 @@ extern NSString * const kMBDefaultsNetworkHostBlacklistKey;
 
 NS_ASSUME_NONNULL_END
 
-#endif

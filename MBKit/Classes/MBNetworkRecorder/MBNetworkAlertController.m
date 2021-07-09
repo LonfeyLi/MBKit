@@ -1,21 +1,21 @@
 //
-//  MBAlertControllerManager.m
+//  MBNetworkAlertController.m
 //  MBKit_Example
 //
 //  Created by 李龙飞 on 2021/7/7.
 //  Copyright © 2021 LoneyLi. All rights reserved.
 //
 
-#import "MBAlertControllerManager.h"
+#import "MBNetworkAlertController.h"
 
 #define MBAlertActionMutationAssertion() \
 NSAssert(!self._action, @"Cannot mutate action after retreiving underlying UIAlertAction");
-@interface MBAlertControllerManager ()
+@interface MBNetworkAlertController ()
 @property (nonatomic, readonly) UIAlertController *_controller;
-@property (nonatomic, readonly) NSMutableArray<MBAlertAction *> *_actions;
+@property (nonatomic, readonly) NSMutableArray<MBNewworkAlertAction *> *_actions;
 @end
 
-@implementation MBAlertControllerManager
+@implementation MBNetworkAlertController
 
 - (instancetype)initWithController:(UIAlertController *)controller {
     self = [super init];
@@ -29,11 +29,11 @@ NSAssert(!self._action, @"Cannot mutate action after retreiving underlying UIAle
 
 + (UIAlertController *)make:(MBAlertBuilder)block withStyle:(UIAlertControllerStyle)style {
     // Create alert builder
-    MBAlertControllerManager *alert = [[self alloc] initWithController:
+    MBNetworkAlertController *alert = [[self alloc] initWithController:
         [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:style]
     ];
     block(alert);
-    for (MBAlertAction *builder in alert._actions) {
+    for (MBNewworkAlertAction *builder in alert._actions) {
         [alert._controller addAction:builder.action];
     }
     return alert._controller;
@@ -42,7 +42,7 @@ NSAssert(!self._action, @"Cannot mutate action after retreiving underlying UIAle
     return [self make:block withStyle:UIAlertControllerStyleAlert];
 }
 + (void)showAlert:(NSString *)title message:(NSString *)message from:(UIViewController *)viewController {
-    [self makeAlert:^(MBAlertControllerManager *make) {
+    [self makeAlert:^(MBNetworkAlertController *make) {
         make.title = title;
         make.message = message;
         make.button = @"Dissmiss";
@@ -73,7 +73,7 @@ NSAssert(!self._action, @"Cannot mutate action after retreiving underlying UIAle
 
 @end
 
-@implementation MBAlertAction
+@implementation MBNewworkAlertAction
 
 
 @end

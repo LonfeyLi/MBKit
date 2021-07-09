@@ -6,7 +6,6 @@
 //  Copyright © 2021 杭州因爱网络科技有限公司. All rights reserved.
 //
 
-#ifndef RELEASE
 
 #import <UIKit/UIKit.h>
 #import "MBNetworkTransaction.h"
@@ -20,4 +19,3 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_END
 
-#endif

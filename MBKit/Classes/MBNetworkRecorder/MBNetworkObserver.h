@@ -6,7 +6,6 @@
 //  Copyright © 2021 杭州因爱网络科技有限公司. All rights reserved.
 //
 
-#ifndef RELEASE
 
 #import <Foundation/Foundation.h>
 
@@ -19,4 +18,3 @@ FOUNDATION_EXTERN NSString *const kMBNetworkObserverEnabledStateChangedNotificat
 
 NS_ASSUME_NONNULL_END
 
-#endif

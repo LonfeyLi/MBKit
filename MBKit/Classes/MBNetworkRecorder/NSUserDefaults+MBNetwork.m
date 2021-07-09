@@ -6,7 +6,6 @@
 //  Copyright © 2021 杭州因爱网络科技有限公司. All rights reserved.
 //
 
-#ifndef RELEASE
 
 #import "NSUserDefaults+MBNetwork.h"
 
@@ -37,4 +36,3 @@ NSString * const kMBDefaultsNetworkHostBlacklistKey = @"com.flipboard.MB.network
 
 @end
 
-#endif

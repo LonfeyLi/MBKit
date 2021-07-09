@@ -1,5 +1,5 @@
 //
-//  MBAlertControllerManager.h
+//  MBNetworkAlertController.h
 //  MBKit_Example
 //
 //  Created by 李龙飞 on 2021/7/7.
@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-@class MBAlertControllerManager;
+@class MBNetworkAlertController;
 NS_ASSUME_NONNULL_BEGIN
-typedef void (^MBAlertBuilder)(MBAlertControllerManager *make);
+typedef void (^MBAlertBuilder)(MBNetworkAlertController *make);
 
-@interface MBAlertControllerManager : NSObject
+@interface MBNetworkAlertController : NSObject
 + (UIAlertController *)makeAlert:(MBAlertBuilder)block;
 + (void)showAlert:(NSString *)title message:(NSString *)message from:(UIViewController *)viewController;
 + (void)makeAlert:(MBAlertBuilder)block showFrom:(UIViewController *)viewController;
@@ -20,7 +20,7 @@ typedef void (^MBAlertBuilder)(MBAlertControllerManager *make);
 @property (nonatomic, copy) NSString *button;
 @end
 
-@interface MBAlertAction : NSObject
+@interface MBNewworkAlertAction : NSObject
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, strong) UIAlertAction *action;
 @end

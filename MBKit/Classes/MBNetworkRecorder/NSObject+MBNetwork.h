@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#ifndef RELEASE
 
 NS_ASSUME_NONNULL_BEGIN
 NSArray<Class> *MBGetAllSubclasses(_Nullable Class cls, BOOL includeSelf);
@@ -18,4 +17,3 @@ NSArray<Class> *MBGetAllSubclasses(_Nullable Class cls, BOOL includeSelf);
 
 NS_ASSUME_NONNULL_END
 
-#endif
